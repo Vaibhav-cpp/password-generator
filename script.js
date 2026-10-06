@@ -17,15 +17,21 @@ let pwdLen = 10;
 let checkCount = 0;
 handleSlider();
 //strength circle color to grey
+setIndicator("#ccc");
  
 //set pwd length
 function handleSlider(){
     inputSlider.value = pwdLen;
     lengthDisplay.innerText = pwdLen;
+
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize = ((pwdLen-min)*100/(max - min)) + "% 100%";
 }
 
 function setIndicator(color){
     strengthIndicator.style.backgroundColor = color;
+    strengthIndicator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
 function getRandInt(min, max){
